@@ -19,6 +19,7 @@ dependencies = [
     # greenlet on M1 Macs (arm64)
     "greenlet; platform_machine == 'arm64'",
     "aiosqlite==0.21.0",
+    "psycopg>=3.2.9",
 ]
 
 

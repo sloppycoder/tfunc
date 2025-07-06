@@ -79,6 +79,8 @@ panzi-json-logic==1.0.1
     # via openfeature-provider-flagd
 protobuf==6.31.1
     # via openfeature-provider-flagd
+psycopg==3.2.9
+    # via tfunc (pyproject.toml)
 pyasn1==0.6.1
     # via
     #   python-jose
@@ -140,6 +142,7 @@ typing-extensions==4.14.1
     #   alembic
     #   anyio
     #   fastapi
+    #   psycopg
     #   pydantic
     #   pydantic-core
     #   rich-toolkit
