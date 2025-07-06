@@ -2,15 +2,13 @@
 
 cd "$(dirname "$0")"
 
-set +e
-
-if [ "$DATABASE_URL" = "" && -f [ "/secrets/database_url" ] ]; then
-    export DATABASE_URL=$(cat /secrets/database_url)
+if [ -z "$DATABASE_URL" ] && [ -f /secrets/database_url ]; then
+    DATABASE_URL=$(cat /secrets/database_url)
+    export DATABASE_URL
 fi
 
-if [ "$DATABASE_URL" = "" ]; then
+if [ -z "$DATABASE_URL" ]; then
     echo DATABASE_URL not set, aborting.
-    /bin/sleep infinity
     exit 1
 fi
 
