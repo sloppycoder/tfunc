@@ -37,6 +37,13 @@ class AppSettings(BaseSettings):
 settings = AppSettings()
 settings.feature_flags_prefix = settings.feature_flags_prefix or settings.app_name
 
+if settings.database_url.startswith("postgresql://"):
+    # use psycopg3 driver if not explicitly specified
+    # this is useful when database_url is set by some
+    # exnteral party, e.g. cnpg operator
+    settings.database_url = settings.database_url.replace(
+        "postgresql://", "postgresql+psycopg://"
+    )
 
 if settings.async_orm and not settings.database_url_async:
     # try to derive the async database URL from the sync one
