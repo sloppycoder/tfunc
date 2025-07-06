@@ -1,0 +1,81 @@
+[project]
+name = "tfunc"
+version = "0.1.0"
+description = "Cookiecutter template for generic Python 3 project with tooling configuration for testing, linting and IDE support"
+authors = [{ name = "Li Lin", email = "guru.lin@gmail.com" }]
+readme = "README.md"
+
+requires-python = ">= 3.12"
+dependencies = [
+    "fastapi[standard]>=0.115.12",
+    "ulid-py>=1.1.0",
+    "python-jose[cryptography]>=3.4.0",
+    "pydantic-settings>=2.9.1",
+    "openfeature-sdk>=0.8.1",
+    "openfeature-provider-flagd>=0.2.3",
+    "sqlmodel>=0.0.24",
+    "alembic >= 1.15.2",
+    # sqlalchemy[asyncio] somehow does not install
+    # greenlet on M1 Macs (arm64)
+    "greenlet; platform_machine == 'arm64'",
+    "aiosqlite==0.21.0",
+]
+
+
+[dependency-groups]
+dev = [
+    "pytest >= 8.3.0",
+    "pytest-dotenv >= 0.5.2",
+    "pytest-mock >= 3.14",
+    "pytest-cov >= 6.1",
+    "pytest-asyncio>=0.25.3",
+    "pre-commit >= 4.0.1",
+    "ruff >= 0.11.8",
+    "pyright >= 1.1.400",
+    "sqlalchemy-utils>=0.41.2",
+]
+
+[tool.uv]
+managed = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = ["tests"]
+pythonpath = ["."]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+env_files = [".env"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.coverage.run]
+source = ["."]
+omit = [
+    "tests/*",
+]
+
+# see ruff configuration options at
+# https://docs.astral.sh/ruff/configuration/
+
+[tool.ruff]
+line-length = 90
+indent-width = 4
+exclude = [
+    ".git",
+    "__pycache__",
+    "venv",
+    ".venv",
+    "migrations",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "W",
+    "C",
+    "I",
+    "A",
+] # Enable checks for PEP8, imports, and other standard rules
+ignore = ["E203", "E266"]

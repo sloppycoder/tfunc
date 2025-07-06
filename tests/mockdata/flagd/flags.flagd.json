@@ -1,0 +1,13 @@
+{
+    "$schema": "https://flagd.dev/schema/v0/flags.json",
+    "flags": {
+        "tfunc.useful_svc": {
+            "variants": {
+                "on": true,
+                "off": false
+            },
+            "state": "ENABLED",
+            "defaultVariant": "off"
+        }
+    }
+}
