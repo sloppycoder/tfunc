@@ -81,6 +81,8 @@ protobuf==6.31.1
     # via openfeature-provider-flagd
 psycopg==3.2.9
     # via tfunc (pyproject.toml)
+psycopg-binary==3.2.9
+    # via psycopg
 pyasn1==0.6.1
     # via
     #   python-jose
