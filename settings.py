@@ -10,6 +10,7 @@ from helper import sync2async_database_url
 
 env_file = os.getenv("APP_SETTINGS_ENV", str(Path(__file__).resolve().parent / ".env"))
 
+
 class AppSettings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=env_file,
@@ -18,17 +19,15 @@ class AppSettings(BaseSettings):
     )
 
     # for FastAPI
-    app_name: str = "api3"
+    app_name: str = "tfunc"
     api_audience: str = "api3"
     jwks_url: str = ""
-
 
     # for SQLModel/SQLAlchemy
     database_url: str = "sqlite:///memory:"
     database_url_async: str = ""
     enable_sqlalchemy_echo: bool = False
     async_orm: bool = False
-
 
     # for OpenFeature
     feature_flags_source: str = "http://localhost:8013"
