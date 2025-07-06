@@ -5,6 +5,7 @@ from urllib.parse import urlparse
 
 from openfeature import api
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
 from helper import sync2async_database_url
 
 env_file = os.getenv("APP_SETTINGS_ENV", str(Path(__file__).resolve().parent / ".env"))

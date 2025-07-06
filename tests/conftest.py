@@ -1,18 +1,12 @@
 import json
+import logging
 import os
 from pathlib import Path
 from typing import Callable
+
 import pytest
-import logging
-
-
 from fastapi.testclient import TestClient
-
-
-
 from sqlalchemy_utils import create_database, database_exists, drop_database
-
-
 
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
@@ -54,7 +48,7 @@ def pytest_configure(config):
         print(f"pytest_configure: DATABASE_URL_ASYNC set to {test_database_url_async}")
 
     # set feature flags for testing
-    os.environ["FEATURE_FLAGS_SOURCE"] = f"tests/mockdata/flagd/flags.flagd.json"
+    os.environ["FEATURE_FLAGS_SOURCE"] = "tests/mockdata/flagd/flags.flagd.json"
 
    # set JWKS from local file
     jwks_path = mock_data_path / "jwt/jwks.json"
@@ -74,8 +68,8 @@ def test_db():
     # this import statement should stay here
     # we must override settings.database_url first
     # before imporing the database module
-    from helper import is_in_memory_db
     from database import SessionLocal
+    from helper import is_in_memory_db
     from settings import settings
 
     test_database_url = settings.database_url

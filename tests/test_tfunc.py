@@ -1,7 +1,5 @@
 import pytest
 
-
-
 from settings import settings
 from tests.jwt_utils import create_jwt_token
 

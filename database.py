@@ -1,13 +1,13 @@
-from typing import AsyncIterator, Iterator
 import logging
+from typing import AsyncIterator, Iterator
 
 from sqlalchemy import create_engine
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy.pool import StaticPool
 
-from settings import settings
 from helper import is_in_memory_db
+from settings import settings
 
 logger = logging.getLogger(__name__)
 

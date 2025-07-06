@@ -1,6 +1,6 @@
 import pytest
 
-from helper import sync2async_database_url, is_in_memory_db
+from helper import is_in_memory_db, sync2async_database_url
 
 
 def test_async_db_url():

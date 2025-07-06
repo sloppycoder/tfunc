@@ -1,15 +1,14 @@
 import logging
 import logging.config
-import yaml
+from contextlib import asynccontextmanager
 from pathlib import Path
 
-
 import uvicorn
-from contextlib import asynccontextmanager
+import yaml
 from fastapi import FastAPI
-from tfunc.api import router as tfunc_router
-from settings import settings
 
+from settings import settings
+from tfunc.api import router as tfunc_router
 
 # Load the logging configuration
 LOGGING_CONFIG = {}

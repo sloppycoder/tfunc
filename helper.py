@@ -1,8 +1,9 @@
 import functools
 import inspect
+from urllib.parse import urlparse, urlunparse
 
 from fastapi import HTTPException
-from urllib.parse import urlparse, urlunparse
+
 
 def is_in_memory_db(db_url: str) -> bool:
     """

@@ -2,17 +2,14 @@ import logging
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException
-
-from helper import feature_gated_api
-from security import get_jwt_verifier
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import Session
-from fastapi import Depends, HTTPException
-from tfunc.models  import User
 
 from database import async_db_session, db_session
-
+from helper import feature_gated_api
+from security import get_jwt_verifier
+from tfunc.models import User
 
 logger = logging.getLogger(__name__)
 
